@@ -1,5 +1,5 @@
 
-const con = require('../../DB/Database');
+const pool = require('../../DB/Database');
 
 const register = (req, res) => {
   const { name, lastName, email, mobileNumber, city, password, confirmPassword } = req.body;
@@ -13,7 +13,7 @@ const register = (req, res) => {
   const insertQuery = `INSERT INTO registration (name, lastName, email, mobileNumber, city, password, confirmPassword) 
                        VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
-  con.query(insertQuery, [name, lastName, email, mobileNumber, city, password, confirmPassword], (err, result) => {
+  pool.query(insertQuery, [name, lastName, email, mobileNumber, city, password, confirmPassword], (err, result) => {
     if (err) {
       console.error("Error inserting data:", err);
       return res.status(500).json({ message: "Error inserting data" });

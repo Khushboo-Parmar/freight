@@ -1,4 +1,4 @@
-const con = require('../../DB/Database');
+const pool = require('../../DB/Database');
 
 const updateComplainStatus = (req, res) => {
   const { complaintId, newStatus } = req.body;
@@ -10,7 +10,7 @@ const updateComplainStatus = (req, res) => {
 
   const updateQuery = `UPDATE complainform SET status = ? WHERE id = ?`;
 
-  con.query(updateQuery, [newStatus, complaintId], (err, result) => {
+  pool.query(updateQuery, [newStatus, complaintId], (err, result) => {
     if (err) {
       console.error("Error updating status:", err);
       return res.status(500).json({ message: "Error updating status" });

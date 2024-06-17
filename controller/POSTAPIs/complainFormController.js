@@ -1,44 +1,6 @@
-// const con = require('../../DB/Database');
-// const multer = require('multer');
 
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, 'uploads/');
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, Date.now() + '-' + file.originalname);
-//   }
-// });
 
-// const upload = multer({ storage: storage });
-
-// const uploadSingle = upload.single('documents');
-
-// const submitComplain = (req, res) => {
-//   uploadSingle(req, res, function (err) {
-//     if (err) {
-//       console.error("Multer error:", err);
-//       return res.status(500).json({ message: "Error uploading file" });
-//     }
-
-//     const { name, lastName, mobileNumber, email, productname, productdetail, complain, productWeight, deliverCharges, invoice_no, city, total_charge,createdBy } = req.body;
-//     const documents = req.file ? req.file.filename : '';
-
-//     const insertQuery = `INSERT INTO complainform (name, lastName, mobileNumber, email, productname, productdetail, complain, productWeight, deliverCharges, invoice_no, city, total_charge, documents, status, createdBy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?)`;
-
-//     con.query(insertQuery, [name, lastName, mobileNumber, email, productname, productdetail, complain, productWeight, deliverCharges, invoice_no, city, total_charge, documents, createdBy], (err, result) => {
-//       if (err) {
-//         console.error("Error inserting data:", err);
-//         return res.status(500).json({ message: "Error inserting data" });
-//       }
-//       res.json({ message: "Data inserted successfully" });
-//     });
-
-//   });
-// };
-
-// module.exports = { submitComplain };
-const con = require('../../DB/Database');
+const pool = require('../../DB/Database');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
@@ -79,7 +41,7 @@ const submitComplain = (req, res) => {
 
     const insertQuery = `INSERT INTO complainform (name, lastName, mobileNumber, email, productname, productdetail, complain, productWeight, deliverCharges, invoice_no, city, total_charge, documents, status, createdBy, searchId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?)`;
 
-    con.query(insertQuery, [name, lastName, mobileNumber, email, productname, productdetail, complain, productWeight, deliverCharges, invoice_no, city, total_charge, documents, createdBy, searchId], (err, result) => {
+    pool.query(insertQuery, [name, lastName, mobileNumber, email, productname, productdetail, complain, productWeight, deliverCharges, invoice_no, city, total_charge, documents, createdBy, searchId], (err, result) => {
       if (err) {
         console.error("Error inserting data:", err);
         return res.status(500).json({ message: "Error inserting data" });
@@ -94,7 +56,7 @@ const getComplaintStatus = (req, res) => {
 
   const selectQuery = `SELECT status FROM complainform WHERE searchId = ?`;
 
-  con.query(selectQuery, [searchId], (err, result) => {
+  pool.query(selectQuery, [searchId], (err, result) => {
     if (err) {
       console.error("Error fetching data:", err);
       return res.status(500).json({ message: "Error fetching data" });

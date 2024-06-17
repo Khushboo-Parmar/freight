@@ -1,4 +1,4 @@
-const con = require('../../DB/Database');
+const pool = require('../../DB/Database');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
@@ -17,7 +17,7 @@ const submitComplain = (req, res) => {
   const documents = req.file ? req.file.filename : '';
   const insertQuery = `INSERT INTO complainform (name, lastName, mobileNumber, email, productname, productdetail, complain, productWeight, deliverCharges, invoice_no, city, total_charge, documents, status) 
                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')`;
-  con.query(insertQuery, [name, lastName, mobileNumber, email, productname, productdetail, complain, productWeight, deliverCharges, invoice_no, city, total_charge, documents], (err, result) => {
+                       pool.query(insertQuery, [name, lastName, mobileNumber, email, productname, productdetail, complain, productWeight, deliverCharges, invoice_no, city, total_charge, documents], (err, result) => {
     if (err) {
       console.error("Error inserting data:", err);
       return res.status(500).json({ message: "Error inserting data" });
@@ -38,7 +38,7 @@ const updateStatus = (req, res) => {
   };
 
   const updateQuery = `UPDATE complainform SET status = ? WHERE id = ?`;
-  con.query(updateQuery, [statusMapping[status], id], (err, result) => {
+  pool.query(updateQuery, [statusMapping[status], id], (err, result) => {
     if (err) {
       console.error("Error updating status:", err);
       return res.status(500).json({ message: "Error updating status" });
