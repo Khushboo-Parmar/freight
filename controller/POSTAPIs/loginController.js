@@ -1,6 +1,6 @@
 const pool = require('../../DB/Database');
 const jwt = require('jsonwebtoken');
-const jwtKey ='eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTcxNzA2NzIwNSwiaWF0IjoxNzE3MDY3MjA1fQ.m6ksvyKy0eFkl5IAIXS_5OxzkeGemFv5TJfdyynhZWQ';
+const jwtKey ='eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTcxODcwNTg0NiwiaWF0IjoxNzE4NzA1ODQ2fQ.DB9vtI0kuHg6k-ckDdtiLKROlkNZ9EOq2qnh5G6JD1A';
 const login = (req, res) => {
   const { email, password } = req.body;
   
