@@ -23,6 +23,7 @@
 // module.exports = {
 //   getUserComplaints,
 // };
+
 const pool = require('../../DB/Database');
 
 const getUserComplaints = (req, res) => {
@@ -32,7 +33,7 @@ const getUserComplaints = (req, res) => {
         return res.status(400).json({ message: "User ID is required" });
     }
 
-    const selectQuery = `SELECT * FROM complainform WHERE createdBy = ?`;
+    const selectQuery = `SELECT * FROM claim WHERE generatedBy = ?`;
 
     pool.query(selectQuery, [userId], (err, results) => {
         if (err) {
