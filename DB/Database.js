@@ -8,7 +8,6 @@ const mysql = require('mysql');
 //     database: "freight"
 // });
 const pool = mysql.createPool({
-    connectionLimit: 10, // adjust as per your application's needs
     host: "138.197.7.241",
     user: "swsteam",
     password: "Sws@root@2024",
