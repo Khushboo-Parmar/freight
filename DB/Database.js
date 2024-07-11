@@ -4,7 +4,8 @@ const pool = mysql.createPool({
     host: "138.197.7.241",
     user: "swsteam",
     password: "Sws@root@2024",
-    database: "freight"
+    database: "freight",
+    // port:3306
 });
 // const pool = mysql.createPool({
 //     connectionLimit: 10, 
