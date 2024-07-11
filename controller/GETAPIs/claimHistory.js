@@ -42,6 +42,15 @@ const getClaimHistory = (req, res) => {
             console.error("Error fetching claim history:", err);
             return res.status(500).json({ message: "Error fetching claim history" });
         }
+
+
+        // if (results.length === 0) {
+
+        //     return res.status(404).json({ message: 'No complaints found for the given user ID' });
+
+        // }
+
+
         
         res.json({ complaints: results });
         console.log('Fetched results:', results);

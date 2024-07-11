@@ -1,19 +1,18 @@
-const mysql = require('mysql');
-
-// const pool = mysql.createPool({
-//     connectionLimit: 10, 
-//     host: "138.197.7.241",
-//     user: "swsteam",
-//     password: "Sws@root@2024",
-//     database: "freight"
-// });
+const mysql = require('mysql2');
 const pool = mysql.createPool({
-    connectionLimit: 10, // adjust as per your application's needs
+    connectionLimit: 10, 
     host: "138.197.7.241",
     user: "swsteam",
     password: "Sws@root@2024",
     database: "freight"
 });
+// const pool = mysql.createPool({
+//     connectionLimit: 10, 
+//     host: "localhost",
+//     user: "root",
+//     password: "",
+//     database: "freight"
+// });
 
 pool.getConnection((err, connection) => {
     if (err) {
@@ -35,3 +34,4 @@ pool.getConnection((err, connection) => {
 });
 
 module.exports = pool;
+

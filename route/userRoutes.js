@@ -25,5 +25,5 @@ router.get('/complain/status/:searchId', getComplaintStatus);
 router.post('/updateProfile/:id', profileUpdateController);
 router.post('/send-verification-code', sendOTP);
 router.post('/verifyOTP', verifyOTP);
-router.post('/getClaimHistory/:userId', getClaimHistory);
+router.get('/getClaimHistory/:userId', getClaimHistory);
 module.exports = router;    
