@@ -22,7 +22,7 @@ router.post('/claim/:phoneNumber', submitComplain)
 router.get('/complaints', getUserComplaints);
 router.post('/updateComplainStatus', updateComplainStatus);
 router.get('/complain/status/:searchId', getComplaintStatus);
-router.post('/updateProfile/:id', profileUpdateController);
+router.post('/updateProfile/:userId', profileUpdateController);
 router.post('/send-verification-code', sendOTP);
 router.post('/verifyOTP', verifyOTP);
 router.get('/getClaimHistory/:userId', getClaimHistory);
