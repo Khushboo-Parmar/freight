@@ -44,6 +44,7 @@ const submitComplain = async (req, res) => {
     const invoiceImage = req.files['invoiceImage'] ? req.files['invoiceImage'][0].filename : '';
     const transportR = req.files['transportR'] ? req.files['transportR'][0].filename : '';
     const searchId = generateSearchId(6);
+    console.log('req body=', req.body); 
 
     pool.query('SELECT id FROM user WHERE phone_no = ?', [phoneNumber], (err, userResult) => {
       if (err) {

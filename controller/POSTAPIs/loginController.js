@@ -73,7 +73,7 @@ const login = (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).json({ message: "Email and password are required" });
+    return res.status(400).json({ message: "Please fill the login details" });
   }
 
   const selectQuery = `SELECT id, name, email, password, gstNo, address, city, district, shopImages, userId FROM signup WHERE email = ? AND password = ?`;
@@ -87,7 +87,7 @@ const login = (req, res) => {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    // const user = result[0];
+
 
 const user = {
   ...result[0],

@@ -7,7 +7,8 @@ const pool = require('../../DB/Database');
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = new twilio(accountSid, authToken);
-
+console.log("accountSid", accountSid);
+console.log("authToken", authToken);
 
 async function sendOTP(req, res) {
     try {
@@ -25,10 +26,13 @@ async function sendOTP(req, res) {
                 return res.status(500).json({ error: 'Internal Server Error' });
             }
 
+
+
             client.messages.create({
                 body: `Your Verification Code for Registration is ${otp}`,
                 from: '+14124471922',
-                to: `${code}${number}`,
+                to: '+9131655118',
+                // to: `${code}${number}`,
             }).then((message) => {
                 console.log('OTP sent:', message.sid);
                 res.status(200).json({ status: 200, message: 'OTP sent successfully', otp });
