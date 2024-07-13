@@ -2,7 +2,9 @@ require('dotenv').config();
 const pool = require('../../DB/Database');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
+
 
 // Function to handle forgot password
 const forgotPassword = async (req, res) => {
