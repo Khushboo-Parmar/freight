@@ -11,6 +11,7 @@ const sendOTP = require('../controller/POSTAPIs/VerificationController');
 const verifyOTP = require('../controller/POSTAPIs/otpVerifyController');
 const { submitComplain, getComplaintStatus } = require('../controller/POSTAPIs/complainFormController');
 const { getClaimHistory } = require('../controller/GETAPIs/claimHistory');
+const { forgotPassword, resetPassword } = require('../controller/POSTAPIs/ForgotPasswordController');
 
 const router= express.Router();
 
@@ -26,4 +27,6 @@ router.post('/updateProfile/:userId', profileUpdateController);
 router.post('/send-verification-code', sendOTP);
 router.post('/verifyOTP', verifyOTP);
 router.get('/getClaimHistory/:userId', getClaimHistory);
+router.post('/forgotPassword', forgotPassword);
+router.post('/reset-password/:token', resetPassword);
 module.exports = router;    
