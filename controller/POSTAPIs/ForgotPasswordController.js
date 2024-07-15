@@ -37,7 +37,7 @@ const forgotPassword = async (req, res) => {
             from: process.env.EMAIL_USER,
             to: email,
             subject: 'Reset your password',
-            text: `To reset your password, click on this link: http://192.168.0.192:3000/api/reset-password/${token}`,
+            text: `To reset your password, click on this link: https://freight.onrender.com/api/reset-password/${token}`,
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
