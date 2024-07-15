@@ -42,12 +42,13 @@ const profileUpdateController = (req, res) => {
     const updateQuery = 'UPDATE signup SET name=?, email=?, city=?, district=? WHERE userId=?';
 
     pool.query(updateQuery, [name, email, city, district, userId], (err, result) => {
+
         if (err) {
             console.error("Error updating profile:", err);
             return res.status(500).json({ message: "Error updating profile" });
         }
         
-        // Check if the update was successful
+
         if (result.affectedRows === 0) {
             return res.status(404).json({ message: "User not found or no changes made" });
         }

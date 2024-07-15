@@ -13,8 +13,8 @@ async function sendOTP(req, res) {
     try {
         const { code, number } = req.body;
         const otp = Math.floor(10000 + Math.random() * 90000);
-        console.log(number);
-        console.log(code);
+        console.log("Received number:", number);
+        console.log("Received code:", code);
         if (!number) {
             return res.status(400).json({ status: 400, message: 'Please Enter The Number' });
         }
@@ -28,6 +28,7 @@ async function sendOTP(req, res) {
             client.messages.create({
                 body: `Your Verification Code for Registration is ${otp}`,
                 from: process.env.TWILIO_PHONE_NUMBER,
+                // to: `+919131655118`,
                 to: `${code}${number}`,
             }).then((message) => {
                 console.log('OTP sent:', message.sid);
